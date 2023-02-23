@@ -20,10 +20,11 @@ void print_diagonal(int n)
 		{
 			for (sp = 1; sp < co; sp++)
 			{
-			}
 			_putchar(' ');
 		}
 		_putchar('\\');
+		_putchar('\n');
+		}
 	}
 
 }
