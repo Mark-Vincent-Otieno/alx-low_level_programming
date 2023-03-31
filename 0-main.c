@@ -1,6 +1,7 @@
-#include "0-object_like_macro.h"
-#include "0-object_like_macro.h"
+#include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
+#include "lists.h"
 
 /**
  * main - check the code
@@ -9,9 +10,31 @@
  */
 int main(void)
 {
-	int s;
+	list_t *head;
+	list_t *new;
+	list_t hello = {"World", 5, NULL};
+	size_t n;
 
-	s = 98 + SIZE;
-	printf("%d\n", s);
+	head = &hello;
+	new = malloc(sizeof(list_t));
+	if (new == NULL)
+	{
+		printf("Error\n");
+		return (1);
+	}
+	new->str = strdup("Hello");
+	new->len = 5;
+	new->next = head;
+	head = new;
+	n = print_list(head);
+	printf("-> %lu elements\n", n);
+
+	printf("\n");
+	free(new->str);
+	new->str = NULL;
+	n = print_list(head);
+	printf("-> %lu elements\n", n);
+
+	free(new);
 	return (0);
 }
